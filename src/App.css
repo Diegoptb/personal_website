@@ -1,0 +1,116 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f8fafc; /* Un gris muy claro, más moderno */
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+/* Esto asegura que use todo el ancho posible hasta un límite razonable */
+.container {
+  width: 100%;         /* Ocupa todo el ancho de la ventana */
+  max-width: 1200px;   /* Pero no te pases de 1200px en pantallas gigantes */
+  margin: 0 auto;      /* Centra el contenedor en la pantalla */
+  padding: 2rem;       /* Espacio a los lados para que no se pegue al borde */
+}
+
+/* --- HEADER --- */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.header h1 {
+  color: #1e293b;
+  font-size: 2.5rem;
+}
+
+/* --- LA CUADRÍCULA (GRID) - LA PARTE CLAVE --- */
+.grid {
+  display: grid;
+  /*
+     TRUCO: Esto crea tantas columnas como quepan.
+     Cada columna debe medir AL MENOS 320px.
+     Si sobra espacio, se estiran (1fr) para ocuparlo todo.
+  */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem; /* Espacio entre tarjetas */
+  width: 100%;
+}
+
+/* --- TARJETAS --- */
+.card {
+  background: white;
+  border: 1px solid #e2e8f0; /* Borde sutil */
+  border-radius: 12px;
+  overflow: hidden; /* Para que la imagen no se salga de las esquinas redondeadas */
+  transition: transform 0.2s, box-shadow 0.2s;
+  /* Hacemos que la tarjeta sea flexible verticalmente */
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Efecto de levantarse al pasar el mouse */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Arreglo de la imagen rota: un fondo gris mientras no carga */
+.card-img {
+  width: 100%;
+  height: 200px; /* Altura fija para que todas sean iguales */
+  object-fit: cover; /* La imagen recorta para llenar el espacio sin deformarse */
+  background-color: #cbd5e1; /* Color de fondo si falla la imagen */
+}
+
+.card-body {
+  padding: 1.5rem;
+  /* Quitamos el centrado forzado para que se vea más profesional a la izquierda */
+  text-align: left;
+  flex-grow: 1; /* Esto empuja el contenido para llenar la tarjeta */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Separa el texto de los tags/botón */
+}
+
+.card-body h3 {
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+/* --- TAGS Y BOTONES --- */
+.tags {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px; /* Tags redondeados */
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #2563eb;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: #1d4ed8; }
